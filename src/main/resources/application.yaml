@@ -1,0 +1,11 @@
+spring:
+#  main:
+#    allow-circular-references: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: pass
