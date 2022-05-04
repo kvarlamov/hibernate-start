@@ -1,6 +1,7 @@
-[2022-04-29 10:14:00, 578] INFO  [JtaPlatformInitiator:52] - [HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-][2022-04-29 10:14:00, 583] INFO  [LocalContainerEntityManagerFactoryBean:437] - [Initialized JPA EntityManagerFactory for persistence unit 'default'
-][2022-04-29 10:14:00, 845] INFO  [LocalContainerEntityManagerFactoryBean:651] - [Closing JPA EntityManagerFactory for persistence unit 'default'
-][2022-04-29 10:14:00, 847] INFO  [HikariDataSource:350] - [HikariPool-1 - Shutdown initiated...
-][2022-04-29 10:14:00, 849] INFO  [HikariDataSource:352] - [HikariPool-1 - Shutdown completed.
+[2022-05-04 11:23:22, 215] INFO  [JtaPlatformInitiator:52] - [HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+][2022-05-04 11:23:22, 221] INFO  [LocalContainerEntityManagerFactoryBean:437] - [Initialized JPA EntityManagerFactory for persistence unit 'default'
+][2022-05-04 17:38:12, 407] WARN  [HikariPool:788] - [HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h14m50s952ms699µs700ns).
+][2022-05-04 17:38:12, 421] INFO  [LocalContainerEntityManagerFactoryBean:651] - [Closing JPA EntityManagerFactory for persistence unit 'default'
+][2022-05-04 17:38:12, 425] INFO  [HikariDataSource:350] - [HikariPool-1 - Shutdown initiated...
+][2022-05-04 17:38:12, 441] INFO  [HikariDataSource:352] - [HikariPool-1 - Shutdown completed.
 ]

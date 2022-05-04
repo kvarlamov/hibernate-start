@@ -1,6 +1,7 @@
 package com.example.hibernatestart;
 
 import com.example.hibernatestart.entity.Birthday;
+import com.example.hibernatestart.entity.PersonalInfo;
 import com.example.hibernatestart.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,9 +25,11 @@ class HibernateStartApplicationTests {
 
         User user = User.builder()
                 .username("ivan@mail.com")
-                .firstname("Ivan")
-                .lastname("Ivanov")
-                .birthDate(LocalDate.of(2000, 1, 10))
+                .personalInfo(PersonalInfo.builder()
+                        .firstname("Egor")
+                        .lastname("Egorov")
+                        .birthDate(LocalDate.of(2000, 1, 10))
+                        .build())
                 .build();
 
         String sql = "insert into %s (%s) values (%s)";
@@ -42,7 +45,7 @@ class HibernateStartApplicationTests {
                 .map(field -> ofNullable(field.getAnnotation(Column.class))
                         .map(Column::name)
                         .orElse(field.getName()))
-                        .collect(joining(", "));
+                .collect(joining(", "));
 
         String values = Arrays.stream(fields)
                 .map(field -> "?")
