@@ -1,12 +1,15 @@
 package com.example.hibernatestart;
 
+import com.example.hibernatestart.dao.ChatRepository;
 import com.example.hibernatestart.dao.CompanyRepository;
+import com.example.hibernatestart.dao.UserChatRepository;
 import com.example.hibernatestart.dao.UserRepository;
 import com.example.hibernatestart.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @SpringBootApplication
@@ -15,19 +18,33 @@ public class HibernateStartApplication {
 
     //private static final Logger log = LoggerFactory.getLogger(HibernateStartApplication.class);
 
+
     public static void main(String[] args) {
         try {
             var context = SpringApplication.run(HibernateStartApplication.class, args);
             var companyRepo = context.getBean(CompanyRepository.class);
             var userRepo = context.getBean(UserRepository.class);
+            var userChatRepo = context.getBean(UserChatRepository.class);
+            var chatRepo = context.getBean(ChatRepository.class);
 
-            User user1 = userRepo.getById(8L);
+            var gCompany = companyRepo.getCompanyByName("Google");
+            gCompany.getUsers().forEach(System.out::println);
+
+
+            User user1 = userRepo.getUserById(8L);
 
             Chat chat = Chat.builder()
                     .name("testChat")
                     .build();
-            user1.addChat(chat);
-            userRepo.saveAndFlush(user1);
+            UserChat userChat = UserChat.builder()
+                    .createdAt(Instant.now())
+                    .createdBy(user1.getUsername())
+                    .build();
+
+            userChat.setUser(user1);
+            userChat.setChat(chat);
+            chatRepo.save(chat);
+            userChatRepo.saveAndFlush(userChat);
 
 //            *****
 //            Company company0 = Company.builder()
